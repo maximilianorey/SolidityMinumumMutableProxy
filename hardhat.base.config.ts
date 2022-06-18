@@ -48,7 +48,7 @@ if (!process.env.mnemonic) {
 const createTestnetConfig = (
   network: keyof typeof chainIds
 ): NetworkUserConfig => {
-  let url: string;
+  let url = "http://127.0.0.1:8545";
   if (network === "rskTestnet") {
     url = "https://public-node.testnet.rsk.co";
   }
@@ -124,6 +124,15 @@ const config: HardhatUserConfig = {
     target: "ethers-v5",
     alwaysGenerateOverloads: false,
   },
+  /*gasReporter: {
+    enabled: process.env.REPORT_GAS ? true : false,
+    currency: "USD",
+    coinmarketcap: "5fd5c88b-ed66-4243-81ab-9870cf2eed7f",
+    token: "MATIC",
+    gasPriceApi:
+      "https://api.polygonscan.com/api?module=proxy&action=eth_gasPrice",
+    excludeContracts: ["EchidnaTest", "Mockup"],
+  },*/
   preprocess: {
     eachLine: removeConsoleLog(
       (hre) => !["hardhat", "localhost"].includes(hre.network.name)
