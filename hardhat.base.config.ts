@@ -47,30 +47,10 @@ if (!process.env.mnemonic) {
   mnemonic = process.env.mnemonic;
 }
 
-let infuraApiKey: string;
-if (!process.env.infura_api_key) {
-  throw new Error("Please set your infura_api_key in a .env file");
-} else {
-  infuraApiKey = process.env.infura_api_key;
-}
-
-let alchemyPolygonMumbaiApiKey: string;
-if (!process.env.alchemy_polygon_mumbai_api_key) {
-  throw new Error(
-    "Please set your alchemy_polygon_mumbai_api_key in a .env file"
-  );
-} else {
-  alchemyPolygonMumbaiApiKey = process.env.alchemy_polygon_mumbai_api_key;
-}
-
 const createTestnetConfig = (
   network: keyof typeof chainIds
 ): NetworkUserConfig => {
-  let url: string = "https://" + network + ".infura.io/v3/" + infuraApiKey;
-  if (network === "polygonMumbai") {
-    url =
-      "https://polygon-mumbai.g.alchemy.com/v2/" + alchemyPolygonMumbaiApiKey;
-  }
+  let url: string;
   if (network === "rskTestnet") {
     url = "https://public-node.testnet.rsk.co";
   }
