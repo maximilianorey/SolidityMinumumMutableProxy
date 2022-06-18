@@ -1,0 +1,8 @@
+src/typechain
+node_modules
+dist
+cache
+artifacts
+out
+docs
+.env
