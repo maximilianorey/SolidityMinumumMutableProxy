@@ -33,8 +33,6 @@ const chainIds = {
   mainnet: 1,
   rinkeby: 4,
   ropsten: 3,
-  polygonMainnet: 137,
-  polygonMumbai: 80001,
   rskTestnet: 31,
   binanceTestnet: 97,
 };
@@ -102,7 +100,6 @@ const config: HardhatUserConfig = {
     kovan: createTestnetConfig("kovan"),
     rinkeby: createTestnetConfig("rinkeby"),
     ropsten: createTestnetConfig("ropsten"),
-    polygonMumbai: createTestnetConfig("polygonMumbai"),
     rskTestnet: createTestnetConfig("rskTestnet"),
     binanceTestnet: createTestnetConfig("binanceTestnet"),
   },
@@ -126,15 +123,6 @@ const config: HardhatUserConfig = {
     outDir: "typechain",
     target: "ethers-v5",
     alwaysGenerateOverloads: false,
-  },
-  gasReporter: {
-    enabled: process.env.REPORT_GAS ? true : false,
-    currency: "USD",
-    coinmarketcap: "5fd5c88b-ed66-4243-81ab-9870cf2eed7f",
-    token: "MATIC",
-    gasPriceApi:
-      "https://api.polygonscan.com/api?module=proxy&action=eth_gasPrice",
-    excludeContracts: ["EchidnaTest", "Mockup"],
   },
   preprocess: {
     eachLine: removeConsoleLog(
