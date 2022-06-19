@@ -57,13 +57,9 @@ contract TestProxyController{
         }
         require(res[0]==address(2),'ERROR GET SELF IMPLEMENTATION');
 
-        DummyProxyController(addr).setImplementation(addrThis, address(0)); // SHOULD FAIL
-
         DummyProxyController(addr).setImplementation(addrThis, address(3));
         require(DummyProxyController(addr).getImplementation(addrThis)==address(3),'ERROR SET IMP');
         DummyProxyController(addr).setOwner(addrThis, address(1));
         require(DummyProxyController(addr).getOwner(addrThis)==address(1),'ERROR GET IMP');
-
-        DummyProxyController(addr).setOwner(addrThis,address(2)); // SHOULD FAIL
     }
 }

@@ -29,7 +29,6 @@ contract TestProxyController2{
         controller.setImplementation(addrThis, address(3));
         require(controller.getImplementation(addrThis)==address(3),'ERROR SET IMP');
         controller.setOwner(addrThis, address(1));
-        controller.setOwner(addrThis, address(2)); //SHOULD FAIL
         require(controller.getOwner(addrThis)==address(1),'ERROR GET IMP');        
     }
 }
